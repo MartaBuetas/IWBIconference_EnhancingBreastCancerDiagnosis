@@ -1,7 +1,5 @@
 # Mitigating annotation shift with single image generative models in breast cancer classification
 
-Code developed for the IWBI 2024 submission.
-
 ```
 Marta Buetas Arcas, Richard Osuala, Oliver Díaz, Karim Lekadir (2024). "Synthetic training data generation from a single image for enhanced breast cancer diagnosis." Departament de Matemàtiques i Informàtica, Universitat de Barcelona, Barcelona, Spain.
 ```
