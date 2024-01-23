@@ -1,4 +1,4 @@
-# Can a single lesion image mitigate annotation shift in breast cancer classification?
+# Mitigating annotation shift with single image generative models in breast cancer classification
 
 Code developed for the IWBI 2024 submission.
 
