@@ -1,7 +1,7 @@
-# Mitigating annotation shift with single image generative models in breast cancer classification
+# Mitigating annotation shift in cancer classification using single image generative models
 
 ```
-Marta Buetas Arcas, Richard Osuala, Oliver Díaz, Karim Lekadir (2024). "Mitigating annotation shift with single image generative models in breast cancer classification." Departament de Matemàtiques i Informàtica, Universitat de Barcelona, Barcelona, Spain.
+Marta Buetas Arcas, Richard Osuala, Oliver Díaz, Karim Lekadir (2024). "Mitigating annotation shift in cancer classification using single image generative models." Departament de Matemàtiques i Informàtica, Universitat de Barcelona, Barcelona, Spain.
 ```
 ## Introduction
 
