@@ -3,7 +3,14 @@
 ```
 Marta Buetas Arcas, Richard Osuala, Oliver Díaz, Karim Lekadir (2024). "Mitigating annotation shift in cancer classification using single image generative models." Departament de Matemàtiques i Informàtica, Universitat de Barcelona, Barcelona, Spain.
 ```
-## Introduction
+
+This repository contains all the code and sources used for the development of the various experiments conducted in the project, submitted to the IWBI 2024 conference.
+
+## Citation
+
+The link to the publication will be available soon. 
+
+## Abstract
 
 Artificial Intelligence (AI) has emerged as a beneficial tool to assist radiologists in breast cancer detection and diagnosis. Both the quantity and quality of available data have a direct impact on the success of these applications. One major challenge is the scarcity of labeled data, largely attributable to the extensive time, effort, and costs associated with acquiring expert annotations. This often limits the training and evaluation of AI models, causing a lack of generalisation and robustness. This issue is further exacerbated by the varying quality of available expert annotations that commonly display high intra- and inter-observer variability. This can lead to annotation shift, where a model’s performance decreases at test time if test annotations differ from their training counterparts, for example, in size, accuracy, delineation, lesion boundary and margin definition, annotation protocol or sourcing modality.
 To increase classification model robustness against annotation shift, one approach is to generate additional training images that correspond to the desired annotation characteristics of the target domain (in-domain). To this end, we propose the selection of a single well-annotated in-domain training image to train a generative AI model, which, in turn, learns to synthesize an arbitrary number of variations. These variations are readily usable as additional classification model training images.
