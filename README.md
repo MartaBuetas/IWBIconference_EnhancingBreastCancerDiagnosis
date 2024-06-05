@@ -6,7 +6,7 @@
 Marta Buetas Arcas, Richard Osuala, Karim Lekadir, Oliver Díaz, "Mitigating annotation shift in cancer classification using single-image generative models," Proc. SPIE 13174, 17th International Workshop on Breast Imaging (IWBI 2024), 1317421 (29 May 2024); https://doi.org/10.1117/12.3025548
 ```
 - Link to SPIE publication: https://doi.org/10.1117/12.3025548
-- Lik to arXiv: https://arxiv.org/abs/2405.19754
+- Link to arXiv: https://arxiv.org/abs/2405.19754
   
 This repository contains all the code and sources used for the development of the experiments conducted in the project, accepted in the SPIE International Workshop on Breast Imaging (IWBI 2024) conference.
 
