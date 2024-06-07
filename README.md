@@ -19,17 +19,23 @@ To increase classification model robustness against annotation shift, one approa
 
 ## Materials
 
+<div align="center">
+    <img src="https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/725899a7-660e-4dfc-bdb1-89bacb19f853", alt="Conference Image" width="500">
+</div>
 
-![image](https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/725899a7-660e-4dfc-bdb1-89bacb19f853)
 *Figure 1.* Our study's primary goal. The classification task in this study is to obtain a pre-biopsy cancer risk prediction of breast lesions. Our multiclass deep-learning classification model distinguishes between (i) healthy tissue, (ii) benign, and (iii) malignant lesions, thereby extending on previous approaches, which focused on general healthy vs non-healthy classification. 
 
 ### Data Preparation and Preprocessing
 
 - The classifier works at patch level and these patches were extracted from the mammograms, including both lesion and healthy areas, in both scanned and digital formats. The technique followed for generating the patch dataset is explained in detail in the Python notebook `generate_patch_dataset.ipynb`. To generate the dataset, the [BCDR dataset](https://bcdr.eu/) needs to be downloaded. Three metadata .csv files are also generated, one for lesions, another for healthy digital patches, and a third one for scanned film patches. These files contain the corresponding data required for the study objectives, each with a unique ID for each patch. To convert the previously generated .csv files into a unified .jsonl metadata file, the Python script `csv_to_jsonl_metadata.py` is used.
 
-- To **simulate annotation shift**, we extract patches from the lesions from more and less tightly fitting bounding boxes surrounding the lesion, i.e., with different levels of zoom. In practice, an accurate lesion delineation allows to extract a tight lesion bounding box. On the other hand, rectangle lesion annotations (e.g. performed either by human experts or by object detection models) contain varying amounts of healthy tissue surrounding the lesions. Therefore, our bounding boxes -- extracted based on different zoom levels -- simulate varying annotation protocols (annotation shift) and thus allow to measure their influence on classification performance. Thus, for each lesion, three patches are defined and extracted with different levels of zoom, capturing varying percentages of adjacent healthy tissue. Group 1 (G1) patches correspond to the most accurate bounding box defined around the original annotated lesion delineation mask. Group 2 (G2) and 3 (G3) capture patches with double (200\%) and triple (300\%) the height and width of the original bounding box, respectively. 
-![image](https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/f697bac0-9aba-4663-a7ae-c8db4fb012b7)
+- To **simulate annotation shift**, we extract patches from the lesions from more and less tightly fitting bounding boxes surrounding the lesion, i.e., with different levels of zoom. In practice, an accurate lesion delineation allows to extract a tight lesion bounding box. On the other hand, rectangle lesion annotations (e.g. performed either by human experts or by object detection models) contain varying amounts of healthy tissue surrounding the lesions. Therefore, our bounding boxes -- extracted based on different zoom levels -- simulate varying annotation protocols (annotation shift) and thus allow to measure their influence on classification performance. Thus, for each lesion, three patches are defined and extracted with different levels of zoom, capturing varying percentages of adjacent healthy tissue. Group 1 (G1) patches correspond to the most accurate bounding box defined around the original annotated lesion delineation mask. Group 2 (G2) and 3 (G3) capture patches with double (200\%) and triple (300\%) the height and width of the original bounding box, respectively.
+<div align="center">
+    <img src="https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/f697bac0-9aba-4663-a7ae-c8db4fb012b7" alt="Conference Image" width="500">
+</div>
+
 *Figure 2.* Digital mammogram with a biopsy-proven malignant lesion and its corresponding lesion annotation mask. The extracted patches are depicted with increasing extend of non-lesion tissue visible on the patch.
+
 
 ### Patch Classifier Configuration
 
@@ -59,7 +65,11 @@ We investigate data augmentation using SinGAN models to enhance classifier perfo
 
 - In all multiclass classifier experiments, an ensemble architecture is utilized. For both augmentation techniques—SinGAN-based and oversampling—and for the baseline (no data augmentation), three models are trained with a train-validation split across three folds, ensuring each patient appears in only one set. Evaluation employs a fixed test set comprising images from patients exclusively allocated to this set. Ensemble prediction is determined as the mean of predictions generated by each of the three models within the ensemble. In the case of the ensemble combining SinGAN augmentation and oversampling, a total of six models are configured for the ensemble. Notably, the test set remains unchanged across all experiments. Once classifiers are trained, the script `test_trained_models.py` can be used to test the classifier using different methods specified by keyword input flags: oversampling technique, SinGAN-based data augmentation, an ensemble of both techniques, or the baseline with no augmentation.
 
-  ![image](https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/383c906d-9589-459b-85be-5dbbc934414b)
-*Figure 3.* General pipeline of our experiments.
+<div align="center">
+    <img src="https://github.com/MartaBuetas/IWBIconference_EnhancingBreastCancerDiagnosis/assets/101974217/383c906d-9589-459b-85be-5dbbc934414b", alt="Conference Image" width="600">
+</div>
+
+*Figure 3.* General pipeline of our experiments. Patches from healthy and lesion samples are extracted from the BCDR dataset at three zoom levels (G1, G2, G3) per lesion. The dataset is split into three folds, ensuring images from the same patient are in a single set. G1 patches train different SinGAN 
+models individually. Generated samples create a synthetic dataset to balance the training data.
 
 
